@@ -2,757 +2,1148 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Pihu ❤️</title>
 
 <style>
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        -webkit-tap-highlight-color: transparent;
-    }
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap');
 
-    body {
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        min-height: 100vh;
-        background: linear-gradient(145deg, #160b18, #2b1029, #120914);
-        color: white;
-        overflow-x: hidden;
-    }
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-    .page {
-        min-height: 100vh;
-        width: 100%;
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 25px 20px;
-        position: relative;
-        overflow: hidden;
-    }
+html {
+    scroll-behavior: smooth;
+}
 
-    .page.active {
-        display: flex;
-        animation: pageIn 0.6s ease;
-    }
+body {
+    background: #120b10;
+    color: #fff5f7;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
+}
 
-    @keyframes pageIn {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+button {
+    font-family: inherit;
+}
 
-    .container {
-        width: 100%;
-        max-width: 430px;
-        text-align: center;
-        position: relative;
-        z-index: 2;
-    }
+section {
+    min-height: 100vh;
+    width: 100%;
+    padding: 70px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
 
-    .emoji-big {
-        font-size: 70px;
-        margin-bottom: 18px;
-        animation: float 3s ease-in-out infinite;
-    }
+/* ---------- COMMON ---------- */
 
-    @keyframes float {
-        0%,100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-10px);
-        }
-    }
+.container {
+    width: 100%;
+    max-width: 520px;
+    margin: auto;
+    text-align: center;
+}
 
-    h1 {
-        font-size: 32px;
-        line-height: 1.2;
-        margin-bottom: 15px;
-    }
+.small-label {
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    opacity: .55;
+    margin-bottom: 18px;
+}
 
-    h2 {
-        font-size: 26px;
-        margin-bottom: 15px;
-    }
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(48px, 14vw, 82px);
+    line-height: .95;
+}
 
-    p {
-        font-size: 17px;
-        line-height: 1.7;
-        color: #f6dceF;
-    }
+h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(35px, 10vw, 58px);
+    line-height: 1;
+    margin-bottom: 22px;
+}
 
-    .highlight {
-        color: #ff83bd;
-        font-weight: 700;
-    }
+p {
+    line-height: 1.7;
+    color: rgba(255,245,247,.78);
+}
 
-    .small {
-        font-size: 14px;
-        opacity: 0.7;
-    }
+.highlight {
+    color: #ff91aa;
+}
 
-    .card {
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.13);
-        border-radius: 25px;
-        padding: 25px 20px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 15px 50px rgba(0,0,0,0.3);
-        margin-top: 20px;
-    }
+.primary-btn {
+    border: 0;
+    background: #ff6688;
+    color: white;
+    padding: 15px 26px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 28px;
+    box-shadow: 0 12px 35px rgba(255,80,120,.22);
+    transition: .25s;
+}
 
-    button {
-        border: none;
-        outline: none;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 700;
-        padding: 15px 25px;
-        border-radius: 50px;
-        margin-top: 25px;
-        transition: 0.25s ease;
-        font-family: inherit;
-    }
+.primary-btn:active {
+    transform: scale(.95);
+}
 
-    .primary {
-        background: linear-gradient(135deg, #ff4f9a, #ff78b7);
-        color: white;
-        box-shadow: 0 8px 25px rgba(255,79,154,0.35);
-    }
+/* ---------- HERO ---------- */
 
-    .primary:active {
-        transform: scale(0.94);
-    }
+.hero {
+    background:
+        radial-gradient(circle at 50% 35%, rgba(255,70,110,.16), transparent 38%),
+        #120b10;
+}
 
-    .secondary {
-        background: rgba(255,255,255,0.1);
-        color: white;
-        border: 1px solid rgba(255,255,255,0.2);
-    }
+.hero-heart {
+    font-size: 58px;
+    margin-bottom: 20px;
+    animation: heartbeat 1.5s infinite;
+}
 
-    .nickname-box {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        margin-top: 20px;
-    }
+.hero h1 span {
+    color: #ff7694;
+}
 
-    .nickname {
-        padding: 10px 15px;
-        border-radius: 30px;
-        background: rgba(255,105,180,0.13);
-        border: 1px solid rgba(255,150,200,0.2);
-        color: #ffd6e9;
-        animation: pop 0.5s ease forwards;
+.hero-sub {
+    max-width: 360px;
+    margin: 25px auto 0;
+    font-size: 16px;
+}
+
+.scroll {
+    position: absolute;
+    bottom: 28px;
+    font-size: 12px;
+    opacity: .4;
+    letter-spacing: 2px;
+}
+
+/* ---------- LETTER ---------- */
+
+.letter-section {
+    background: #f9e9ec;
+    color: #32151e;
+}
+
+.letter {
+    background: #fffafa;
+    color: #32151e;
+    border-radius: 25px;
+    padding: 35px 27px;
+    text-align: left;
+    box-shadow: 0 25px 80px rgba(0,0,0,.25);
+}
+
+.letter p {
+    color: #542c38;
+    margin-bottom: 18px;
+}
+
+.letter-sign {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 23px;
+    margin-top: 25px;
+}
+
+/* ---------- CHAT ---------- */
+
+.chat-section {
+    background: #171018;
+}
+
+.chat {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    text-align: left;
+}
+
+.bubble {
+    max-width: 82%;
+    padding: 13px 17px;
+    border-radius: 19px;
+    font-size: 15px;
+    line-height: 1.45;
+    animation: pop .5s both;
+}
+
+.me {
+    align-self: flex-end;
+    background: #ff6688;
+    border-bottom-right-radius: 5px;
+}
+
+.her {
+    align-self: flex-start;
+    background: #292129;
+    border-bottom-left-radius: 5px;
+}
+
+.chat-ending {
+    margin-top: 35px;
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+}
+
+/* ---------- NICKNAMES ---------- */
+
+.nicknames {
+    background: #24131b;
+}
+
+.name-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 30px auto;
+}
+
+.name-pill {
+    padding: 11px 17px;
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 999px;
+    background: rgba(255,255,255,.05);
+}
+
+.nickname-ending {
+    margin-top: 35px;
+    font-family: 'Playfair Display', serif;
+    font-size: 25px;
+}
+
+/* ---------- MEDIA ---------- */
+
+.media-section {
+    background: #100b0e;
+}
+
+.media-card {
+    margin: 55px 0;
+}
+
+.media-frame {
+    width: 100%;
+    border-radius: 25px;
+    overflow: hidden;
+    background: #1b1217;
+    box-shadow: 0 20px 60px rgba(0,0,0,.4);
+}
+
+.media-frame img,
+.media-frame video {
+    width: 100%;
+    display: block;
+    max-height: 700px;
+    object-fit: cover;
+}
+
+.media-caption {
+    padding: 20px 5px 0;
+}
+
+.media-caption h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 29px;
+    margin-bottom: 7px;
+}
+
+.media-caption p {
+    font-size: 14px;
+}
+
+/* ---------- FACTS ---------- */
+
+.facts {
+    background: #f4dce2;
+    color: #32151e;
+}
+
+.facts p {
+    color: #583944;
+}
+
+.fact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 30px;
+}
+
+.fact {
+    background: rgba(255,255,255,.55);
+    border-radius: 20px;
+    padding: 20px 10px;
+    font-size: 14px;
+}
+
+.fact span {
+    display: block;
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+/* ---------- APOLOGY ---------- */
+
+.apology {
+    background:
+        radial-gradient(circle at 50% 50%, rgba(255,80,120,.12), transparent 45%),
+        #130c11;
+}
+
+.apology-text {
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    line-height: 1.65;
+}
+
+.big-sorry {
+    font-size: 55px;
+    margin: 20px 0;
+}
+
+/* ---------- FORGIVE ---------- */
+
+.forgive {
+    background: #24121a;
+}
+
+.buttons {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.yes-btn,
+.no-btn {
+    border: 0;
+    padding: 15px 25px;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.yes-btn {
+    background: #ff6688;
+    color: white;
+}
+
+.no-btn {
+    background: #33242c;
+    color: white;
+}
+
+.tease {
+    min-height: 25px;
+    margin-top: 22px;
+    color: #ff9eb2;
+    font-size: 14px;
+}
+
+/* ---------- SUCCESS ---------- */
+
+.success {
+    display: none;
+    background:
+        radial-gradient(circle, rgba(255,90,130,.2), transparent 45%),
+        #130c11;
+}
+
+.success.show {
+    display: flex;
+}
+
+.confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.confetti span {
+    position: absolute;
+    top: -20px;
+    font-size: 20px;
+    animation: fall 3s linear forwards;
+}
+
+/* ---------- SECRET ---------- */
+
+.secret {
+    display: none;
+    background: #0c080b;
+}
+
+.secret.show {
+    display: flex;
+}
+
+.secret-intro {
+    margin-bottom: 40px;
+}
+
+.secret-lock {
+    font-size: 45px;
+    margin-bottom: 20px;
+}
+
+.us-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.love-bg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 150%;
+    font-size: clamp(65px, 22vw, 150px);
+    line-height: .8;
+    font-weight: 800;
+    color: rgba(255,105,135,.10);
+    white-space: nowrap;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.us-photo {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    border-radius: 28px;
+    display: block;
+    box-shadow: 0 25px 80px rgba(255,70,110,.18);
+}
+
+.final-text {
+    margin-top: 30px;
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    line-height: 1.5;
+}
+
+.final-sign {
+    margin-top: 25px;
+    font-size: 15px;
+    color: #ff91aa;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes heartbeat {
+    0%,100% { transform: scale(1); }
+    15% { transform: scale(1.15); }
+    30% { transform: scale(1); }
+}
+
+@keyframes pop {
+    from {
+        opacity: 0;
+        transform: translateY(12px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@keyframes fall {
+    to {
+        transform: translateY(110vh) rotate(720deg);
         opacity: 0;
     }
+}
 
-    @keyframes pop {
-        from {
-            opacity: 0;
-            transform: scale(0.7);
-        }
-        to {
-            opacity: 1;
-            transform: scale(1);
-        }
+@media (min-width: 700px) {
+    section {
+        padding: 100px 30px;
     }
 
-    .facts {
-        text-align: left;
-        margin-top: 20px;
+    .media-card {
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
     }
-
-    .fact {
-        padding: 14px 5px;
-        font-size: 16px;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .fact:last-child {
-        border-bottom: none;
-    }
-
-    .question {
-        font-size: 23px;
-        line-height: 1.5;
-        margin-top: 25px;
-    }
-
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 5px;
-        position: relative;
-        min-height: 145px;
-    }
-
-    #noBtn {
-        background: rgba(255,255,255,0.1);
-        color: white;
-        border: 1px solid rgba(255,255,255,0.2);
-        position: relative;
-    }
-
-    .heart {
-        position: fixed;
-        bottom: -30px;
-        font-size: 20px;
-        animation: rise linear forwards;
-        opacity: 0.8;
-        pointer-events: none;
-        z-index: 1;
-    }
-
-    @keyframes rise {
-        0% {
-            transform: translateY(0) rotate(0deg);
-            opacity: 0;
-        }
-        15% {
-            opacity: 0.8;
-        }
-        100% {
-            transform: translateY(-110vh) rotate(360deg);
-            opacity: 0;
-        }
-    }
-
-    .progress {
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 4px;
-        background: #ff5ca8;
-        width: 0%;
-        transition: width 0.5s ease;
-        z-index: 20;
-    }
-
-    .signature {
-        margin-top: 30px;
-        font-size: 18px;
-        color: #ffafd2;
-        font-weight: 600;
-    }
-
-    .big-heart {
-        font-size: 100px;
-        animation: heartbeat 1.2s infinite;
-    }
-
-    @keyframes heartbeat {
-        0%,100% {
-            transform: scale(1);
-        }
-        15% {
-            transform: scale(1.15);
-        }
-        30% {
-            transform: scale(1);
-        }
-        45% {
-            transform: scale(1.1);
-        }
-    }
-
-    .sorry {
-        font-size: 45px;
-        margin: 15px 0;
-    }
-
-    .secret {
-        margin-top: 20px;
-        font-size: 13px;
-        opacity: 0.5;
-    }
-
-    @media (max-width: 380px) {
-        h1 {
-            font-size: 28px;
-        }
-
-        h2 {
-            font-size: 23px;
-        }
-
-        p {
-            font-size: 16px;
-        }
-    }
+}
 </style>
 </head>
 
 <body>
 
-<div class="progress" id="progress"></div>
+<!-- ================= HERO ================= -->
 
-<!-- PAGE 1 -->
-<section class="page active" id="page1">
+<section class="hero">
     <div class="container">
 
-        <div class="emoji-big">🚨</div>
+        <div class="hero-heart">🥺</div>
 
-        <h1>OYE MADAMJI 😤</h1>
+        <div class="small-label">Emergency Situation</div>
 
-        <div class="card">
+        <h1>
+            Pihu is<br>
+            <span>Gussa 😤</span>
+        </h1>
 
-            <p>
-                Ek bahut hi serious emergency ho gayi hai...
-            </p>
+        <p class="hero-sub">
+            Aur ek bechara Sanvariya abhi
+            <b>Operation Manaao Pihu</b>
+            pe hai. 😭
+        </p>
 
-            <br>
-
-            <h2>PIHU MUJHSE GUSSA HAI 😭</h2>
-
-            <p>
-                Aur sabse badi problem ye hai ki...
-                <br><br>
-                <span class="highlight">
-                    iss gareeb ko pata bhi nahi hai ki galti kya hui 🥲
-                </span>
-            </p>
-
-            <p style="margin-top:15px;">
-                Lekin ek cheez pata hai...
-                <br>
-                <b>Madamji ko manaana padega. ❤️</b>
-            </p>
-
-        </div>
-
-        <button class="primary" onclick="nextPage()">
-            Madamji ko manaane ke liye →
+        <button class="primary-btn"
+                onclick="goTo('letter')">
+            Situation samajhne ke liye →
         </button>
-
     </div>
+
+    <div class="scroll">SCROLL ↓</div>
 </section>
 
 
-<!-- PAGE 2 -->
-<section class="page" id="page2">
+<!-- ================= LETTER ================= -->
+
+<section id="letter" class="letter-section">
+
     <div class="container">
 
-        <div class="sorry">🥺</div>
+        <div class="small-label">Dear Madamji</div>
 
-        <h1>Dear Pihu...</h1>
+        <div class="letter">
 
-        <div class="card">
-
-            <p>
-                Mujhe genuinely nahi pata maine kya kand kar diya 😭
-            </p>
-
-            <br>
+            <h2>Pihu,</h2>
 
             <p>
-                Kya bola...
-                <br>
-                kya nahi bola...
-                <br>
-                kya kar diya...
-                <br>
-                ya kya nahi kiya...
+                Mujhe honestly nahi pata maine kya kiya
+                jisse tum gussa ho gayi...
             </p>
-
-            <br>
 
             <p>
-                <span class="highlight">
-                    Kuch bhi ho, Madamji gussa hain.
-                </span>
+                Aur main ye pretend bhi nahi karunga
+                ki mujhe sab pata hai. 😭
             </p>
-
-            <br>
 
             <p>
-                Aur main yahan hoon...
-                <br>
-                officially surrender karne. 🏳️
+                Bas itna pata hai ki
+                <b>tumhara gussa mujhe bilkul pasand nahi.</b>
             </p>
+
+            <p>
+                Isliye reason jo bhi hai...
+                <b>pehle hi sorry. ❤️</b>
+            </p>
+
+            <div class="letter-sign">
+                — Tumhara Sanvariya
+            </div>
 
         </div>
 
-        <button class="primary" onclick="nextPage()">
+        <button class="primary-btn"
+                onclick="goTo('chat')">
             Aage dekho Madamji 👀
         </button>
 
     </div>
+
 </section>
 
 
-<!-- PAGE 3 -->
-<section class="page" id="page3">
+<!-- ================= CHAT ================= -->
+
+<section id="chat" class="chat-section">
+
     <div class="container">
 
-        <h2>Waise ek baat... 👀</h2>
+        <div class="small-label">A very serious conversation</div>
+
+        <div class="chat">
+
+            <div class="bubble me">
+                Oye Madamji 🥺
+            </div>
+
+            <div class="bubble her">
+                😤
+            </div>
+
+            <div class="bubble me">
+                Kya huaaaa 😭
+            </div>
+
+            <div class="bubble her">
+                Kuch nahi.
+            </div>
+
+            <div class="bubble me">
+                Ye "kuch nahi" wala
+                kuch nahi hai 😭
+            </div>
+
+            <div class="bubble her">
+                😤😤
+            </div>
+
+            <div class="bubble me">
+                Accha baba sorry ❤️
+            </div>
+
+        </div>
+
+        <div class="chat-ending">
+            Operation <span class="highlight">"Pihu Ko Manaao"</span><br>
+            starts now. 🫡
+        </div>
+
+        <button class="primary-btn"
+                onclick="goTo('nicknames')">
+            Continue →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= NICKNAMES ================= -->
+
+<section id="nicknames" class="nicknames">
+
+    <div class="container">
+
+        <div class="small-label">One girl, many names</div>
+
+        <h2>PIHU ❤️</h2>
+
+        <div class="name-cloud">
+
+            <div class="name-pill">👑 Malkin</div>
+            <div class="name-pill">😤 Madamji</div>
+            <div class="name-pill">🥺 Baby</div>
+            <div class="name-pill">❤️ Babu</div>
+            <div class="name-pill">🍬 Rasmalai</div>
+            <div class="name-pill">🤍 Rasgulla</div>
+            <div class="name-pill">🐣 Baccha</div>
+            <div class="name-pill">❤️ Sanvariya</div>
+
+        </div>
+
+        <div class="nickname-ending">
+            Naam badalte rehte hain...
+            <br>
+            <span class="highlight">person ek hi hai. ❤️</span>
+        </div>
+
+        <button class="primary-btn"
+                onclick="goTo('media')">
+            Ab asli Pihu dekho →
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MEDIA ================= -->
+
+<section id="media" class="media-section">
+
+    <div class="container">
+
+        <div class="small-label">My favourite versions of you</div>
+
+        <!-- MADAMJI -->
+
+        <div class="media-card">
+
+            <div class="media-frame">
+                <img src="photos/pihudevi.jpg"
+                     alt="Pihu">
+            </div>
+
+            <div class="media-caption">
+
+                <h3>👑 Meri Madamji</h3>
+
+                <p>
+                    Madamji wali vibe alag hi level ki hai.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SMILE -->
+
+        <div class="media-card">
+
+            <div class="media-frame">
+                <img src="photos/pihusmile.jpg"
+                     alt="Pihu smiling">
+            </div>
+
+            <div class="media-caption">
+
+                <h3>😊 Meri Favourite Smile</h3>
+
+                <p>
+                    Ye smile dekh ke gussa karna
+                    thoda mushkil hai. 🥺
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- LAZY -->
+
+        <div class="media-card">
+
+            <div class="media-frame">
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata">
+
+                    <source
+                        src="videos/pihulazy.mp4"
+                        type="video/mp4">
+
+                </video>
+
+            </div>
+
+            <div class="media-caption">
+
+                <h3>🐣 Mera Bacchaaa</h3>
+
+                <p>
+                    Bas ye meri bacchaaa hai. 😭❤️
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- PUCCHI -->
+
+        <div class="media-card">
+
+            <div class="media-frame">
+
+                <video
+                    controls
+                    playsinline
+                    preload="metadata">
+
+                    <source
+                        src="videos/pihupucchi.mp4"
+                        type="video/mp4">
+
+                </video>
+
+            </div>
+
+            <div class="media-caption">
+
+                <h3>❤️ Mera Love</h3>
+
+                <p>
+                    No explanation required. 🫠
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <button class="primary-btn"
+                onclick="goTo('facts')">
+            Ek aur section hai 👀
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FACTS ================= -->
+
+<section id="facts" class="facts">
+
+    <div class="container">
+
+        <div class="small-label">Things I know about my girl</div>
+
+        <h2>Pihu.exe ❤️</h2>
 
         <p>
-            Tumhe main kitne naam se bulata hoon,
-            iska koi hisaab hai kya? 😂
+            A few very important facts.
         </p>
 
-        <div class="nickname-box">
+        <div class="fact-grid">
 
-            <span class="nickname">Malkin 👑</span>
-            <span class="nickname">Madamji 😤</span>
-            <span class="nickname">Baby 🥺</span>
-            <span class="nickname">Babu 🫶🏻</span>
-            <span class="nickname">Rasmalai 🍬</span>
-            <span class="nickname">Rasgulla 🤍</span>
-            <span class="nickname">Baccha 🐣</span>
-            <span class="nickname">Sanvariya ❤️</span>
+            <div class="fact">
+                <span>✨</span>
+                Beautiful
+            </div>
+
+            <div class="fact">
+                <span>💪</span>
+                Strong
+            </div>
+
+            <div class="fact">
+                <span>🧠</span>
+                Mature
+            </div>
+
+            <div class="fact">
+                <span>👠</span>
+                Model
+            </div>
+
+            <div class="fact">
+                <span>🍔</span>
+                Burger lover
+            </div>
+
+            <div class="fact">
+                <span>🌶️</span>
+                Pani puri lover
+            </div>
 
         </div>
 
-        <div class="card">
-
-            <p>
-                Lekin naam chahe jo bhi ho...
-                <br><br>
-                <span class="highlight">
-                    meri favourite toh tum hi ho. ❤️
-                </span>
-            </p>
-
-        </div>
-
-        <button class="primary" onclick="nextPage()">
-            Aur bhi evidence hai → 😌
+        <button class="primary-btn"
+                onclick="goTo('apology')">
+            Okay... serious moment now →
         </button>
 
     </div>
+
 </section>
 
 
-<!-- PAGE 4 -->
-<section class="page" id="page4">
+<!-- ================= APOLOGY ================= -->
+
+<section id="apology" class="apology">
+
     <div class="container">
 
-        <h2>Pihu ke baare mein 📋</h2>
+        <div class="small-label">No jokes for a second</div>
 
-        <div class="card facts">
+        <div class="big-sorry">🥺</div>
 
-            <div class="fact">
-                👑 <b>Madamji</b> — because apparently main employee hoon
-            </div>
+        <div class="apology-text">
 
-            <div class="fact">
-                ✨ <b>Beautiful</b> — ye toh obvious hai
-            </div>
-
-            <div class="fact">
-                💪 <b>Strong</b> — physically bhi aur mentally bhi
-            </div>
-
-            <div class="fact">
-                🧠 <b>Mature</b> — kabhi-kabhi mujhse zyada 😭
-            </div>
-
-            <div class="fact">
-                👠 <b>Model</b> — meri favourite model ❤️
-            </div>
-
-            <div class="fact">
-                🍔 <b>Burger lover</b> — important information
-            </div>
-
-            <div class="fact">
-                🌶️ <b>Pani puri enthusiast</b> — aur ispe koi argument nahi
-            </div>
-
-        </div>
-
-        <button class="primary" onclick="nextPage()">
-            Ab important part ❤️
-        </button>
-
-    </div>
-</section>
-
-
-<!-- PAGE 5 -->
-<section class="page" id="page5">
-    <div class="container">
-
-        <div class="emoji-big">🥺</div>
-
-        <h1>Okay Madamji...</h1>
-
-        <div class="card">
-
-            <p>
-                Mujhe nahi pata maine kya kiya.
-            </p>
-
-            <br>
-
-            <p>
-                Lekin agar meri kisi baat se,
-                kisi harkat se,
-                ya meri stupidity se
-                tum hurt hui ho...
-            </p>
-
-            <br>
-
-            <h2>I'm Sorry. ❤️</h2>
-
-            <p>
-                Sach mein.
-            </p>
-
-            <br>
-
-            <p>
-                Aur haan...
-                <br>
-                <span class="highlight">
-                    gussa karna allowed hai...
-                </span>
-                <br><br>
-                bas mujhse zyada der tak baat band mat karna. 🥺
-            </p>
-
-        </div>
-
-        <button class="primary" onclick="nextPage()">
-            Last question... 👀
-        </button>
-
-    </div>
-</section>
-
-
-<!-- PAGE 6 -->
-<section class="page" id="page6">
-    <div class="container">
-
-        <div class="question">
-            Madamji...
+            Pihu...
             <br><br>
-            <b>Ab thoda sa gussa kam karogi? 🥺❤️</b>
+
+            Mujhe nahi pata maine kya kiya.
+            <br><br>
+
+            Aur main fake apology bhi nahi karunga
+            ki mujhe sab pata hai.
+            <br><br>
+
+            Bas itna bolunga...
+            <br><br>
+
+            <span class="highlight">
+                I'm Sorry. ❤️
+            </span>
+
+            <br><br>
+
+            Agar meri kisi baat ya harkat se tum hurt hui ho,
+            toh genuinely sorry.
+            <br><br>
+
+            Bas mujhse zyada der tak
+            gussa mat rehna. 🥺
+
         </div>
+
+        <button class="primary-btn"
+                onclick="goTo('forgive')">
+            Ab final question... 👀
+        </button>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FORGIVENESS ================= -->
+
+<section id="forgive" class="forgive">
+
+    <div class="container">
+
+        <div class="small-label">Important question</div>
+
+        <h2>Madamji...</h2>
+
+        <p>
+            Ab thoda sa gussa kam?
+        </p>
 
         <div class="buttons">
 
-            <button class="primary" onclick="forgive()">
+            <button
+                class="yes-btn"
+                onclick="forgive()">
                 Haan ❤️
             </button>
 
-            <button id="noBtn" onclick="moveNo()">
+            <button
+                class="no-btn"
+                id="noBtn"
+                onclick="nope()">
                 Nahi 😤
             </button>
 
         </div>
 
-        <p class="secret">
-            *Nahi button dabana allowed hai... technically 😭*
-        </p>
+        <div class="tease" id="tease"></div>
 
     </div>
+
 </section>
 
 
-<!-- PAGE 7 -->
-<section class="page" id="page7">
+<!-- ================= SUCCESS ================= -->
+
+<section id="success" class="success">
+
     <div class="container">
 
-        <div class="big-heart">❤️</div>
+        <div style="font-size:70px;">
+            😭❤️
+        </div>
 
-        <h1>YESSSS 😭❤️</h1>
+        <h2>YAYYY!</h2>
 
-        <div class="card">
+        <p>
+            Madamji maan gayi!
+        </p>
 
-            <h2>Madamji maan gayi 🥹</h2>
-
-            <p>
-                Operation <b>"Pihu Ko Manaao"</b>
-                officially successful. ✅
-            </p>
-
+        <p style="margin-top:20px;">
+            Operation <b>"Pihu Ko Manaao"</b>
             <br>
+            <span class="highlight">SUCCESSFUL ✅</span>
+        </p>
 
-            <p>
-                Ab idhar aao...
-                <br>
-                <span class="highlight">
-                    ek virtual hug banta hai 🫂
-                </span>
-            </p>
+        <p style="margin-top:30px;">
+            Burger + Pani Puri meri taraf se. 🍔🌶️
+        </p>
 
-            <br>
+        <button class="primary-btn"
+                onclick="secret()">
+            Wait... 👀
+        </button>
 
-            <p>
-                Burger 🍔 + Pani Puri 🌶️
-                <br>
-                meri taraf se.
-            </p>
+    </div>
+
+</section>
+
+
+<!-- ================= SECRET ================= -->
+
+<section id="secret" class="secret">
+
+    <div class="container">
+
+        <div class="secret-intro">
+
+            <div class="secret-lock">🔐</div>
+
+            <div class="small-label">
+                One last thing
+            </div>
+
+            <h2>
+                Tumhe laga<br>
+                bas itna hi tha? 👀
+            </h2>
 
         </div>
 
-        <div class="signature">
-            Tumhara Sanvariya ❤️
+
+        <div class="us-wrapper">
+
+            <div class="love-bg">
+                I LOVE YOU ❤️
+            </div>
+
+            <img
+                src="photos/us.jpg"
+                alt="Us"
+                class="us-photo">
+
+        </div>
+
+
+        <div class="final-text">
+
+            “AI ne picture bana di...<br>
+            ab real life mein recreate karna baaki hai.” 😭
+
+        </div>
+
+        <div class="final-sign">
+            — Tumhara Sanvariya ❤️
         </div>
 
     </div>
+
 </section>
+
+
+<div class="confetti" id="confetti"></div>
 
 
 <script>
 
-let currentPage = 1;
-const totalPages = 7;
+/* ---------- NAVIGATION ---------- */
 
-function showPage(number) {
-
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
-
-    document.getElementById("page" + number).classList.add("active");
-
-    currentPage = number;
-
-    const progress = ((number - 1) / (totalPages - 1)) * 100;
-    document.getElementById("progress").style.width = progress + "%";
-
-    window.scrollTo({
-        top: 0,
+function goTo(id) {
+    document.getElementById(id).scrollIntoView({
         behavior: "smooth"
     });
-
-    createHearts(5);
 }
 
 
-function nextPage() {
-
-    if (currentPage < totalPages) {
-        showPage(currentPage + 1);
-    }
-
-}
-
-
-/* Funny NO button */
+/* ---------- NO BUTTON ---------- */
 
 let noClicks = 0;
 
-function moveNo() {
+const messages = [
+    "Pakka? 🥺",
+    "Sach mein? 😭",
+    "Madamji please 😭",
+    "Burger khila dunga 🍔",
+    "Pani puri bhi 🌶️",
+    "Ab maan bhi jao na 🥺",
+    "Itna gussa bhi koi karta hai? 😭"
+];
+
+function nope() {
+
+    const tease = document.getElementById("tease");
+    const noBtn = document.getElementById("noBtn");
+
+    tease.textContent =
+        messages[Math.min(noClicks, messages.length - 1)];
 
     noClicks++;
 
-    const button = document.getElementById("noBtn");
-
-    const messages = [
-        "Are you sure? 🥺",
-        "Pakka? 😭",
-        "Madamji please 😭",
-        "Itni bhi kya narazgi 🥲",
-        "Burger khila dunga 🍔",
-        "Pani puri bhi 🌶️",
-        "Ab maan bhi jao na 🥺",
-        "Pleaseeeee ❤️"
-    ];
-
-    button.innerText = messages[Math.min(noClicks - 1, messages.length - 1)];
-
+    /* Make the NO button slightly smaller */
     if (noClicks < 5) {
-
-        const x = Math.random() * 120 - 60;
-        const y = Math.random() * 80 - 40;
-
-        button.style.transform =
-            `translate(${x}px, ${y}px)`;
-
-    } else {
-
-        button.innerText = "Theek hai 😭";
-        button.style.transform = "none";
-
+        noBtn.style.transform =
+            `scale(${Math.max(.65, 1 - noClicks * .07)})`;
     }
 }
 
 
-/* Forgive */
+/* ---------- YES ---------- */
 
 function forgive() {
 
-    createHearts(35);
+    const success = document.getElementById("success");
+
+    success.classList.add("show");
+
+    createConfetti();
 
     setTimeout(() => {
-        showPage(7);
-    }, 500);
+        success.scrollIntoView({
+            behavior: "smooth"
+        });
+    }, 100);
 
 }
 
 
-/* Floating hearts */
+/* ---------- SECRET ---------- */
 
-function createHearts(amount) {
+function secret() {
 
-    const hearts = ["❤️", "💗", "💕", "💖", "💘", "🥺"];
+    const secretSection =
+        document.getElementById("secret");
 
-    for (let i = 0; i < amount; i++) {
+    secretSection.classList.add("show");
 
-        const heart = document.createElement("div");
+    setTimeout(() => {
 
-        heart.className = "heart";
+        secretSection.scrollIntoView({
+            behavior: "smooth"
+        });
 
-        heart.innerText =
-            hearts[Math.floor(Math.random() * hearts.length)];
-
-        heart.style.left =
-            Math.random() * 100 + "vw";
-
-        heart.style.animationDuration =
-            (3 + Math.random() * 4) + "s";
-
-        heart.style.fontSize =
-            (15 + Math.random() * 18) + "px";
-
-        document.body.appendChild(heart);
-
-        setTimeout(() => {
-            heart.remove();
-        }, 7000);
-
-    }
+    }, 100);
 }
 
 
-/* Background hearts */
+/* ---------- CONFETTI ---------- */
 
-setInterval(() => {
+function createConfetti() {
 
-    if (document.querySelectorAll(".heart").length < 12) {
-        createHearts(1);
+    const box =
+        document.getElementById("confetti");
+
+    box.innerHTML = "";
+
+    const emojis = [
+        "❤️",
+        "💗",
+        "💕",
+        "✨",
+        "🥺",
+        "🌸"
+    ];
+
+    for (let i = 0; i < 35; i++) {
+
+        const piece =
+            document.createElement("span");
+
+        piece.textContent =
+            emojis[Math.floor(Math.random() * emojis.length)];
+
+        piece.style.left =
+            Math.random() * 100 + "%";
+
+        piece.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+        piece.style.animationDuration =
+            (2 + Math.random() * 2) + "s";
+
+        box.appendChild(piece);
     }
 
-}, 1800);
-
-
-/* Little extra interaction */
-
-document.addEventListener("click", function() {
-
-    if (Math.random() > 0.75) {
-
-        createHearts(2);
-    }
-
-});
+}
 
 </script>
 
