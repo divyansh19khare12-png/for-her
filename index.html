@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>For Pihu ❤️</title>
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        min-height: 100vh;
+        background: linear-gradient(145deg, #160b18, #2b1029, #120914);
+        color: white;
+        overflow-x: hidden;
+    }
+
+    .page {
+        min-height: 100vh;
+        width: 100%;
+        display: none;
+        align-items: center;
+        justify-content: center;
+        padding: 25px 20px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .page.active {
+        display: flex;
+        animation: pageIn 0.6s ease;
+    }
+
+    @keyframes pageIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .container {
+        width: 100%;
+        max-width: 430px;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .emoji-big {
+        font-size: 70px;
+        margin-bottom: 18px;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+        0%,100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    h1 {
+        font-size: 32px;
+        line-height: 1.2;
+        margin-bottom: 15px;
+    }
+
+    h2 {
+        font-size: 26px;
+        margin-bottom: 15px;
+    }
+
+    p {
+        font-size: 17px;
+        line-height: 1.7;
+        color: #f6dceF;
+    }
+
+    .highlight {
+        color: #ff83bd;
+        font-weight: 700;
+    }
+
+    .small {
+        font-size: 14px;
+        opacity: 0.7;
+    }
+
+    .card {
+        background: rgba(255,255,255,0.08);
+        border: 1px solid rgba(255,255,255,0.13);
+        border-radius: 25px;
+        padding: 25px 20px;
+        backdrop-filter: blur(12px);
+        box-shadow: 0 15px 50px rgba(0,0,0,0.3);
+        margin-top: 20px;
+    }
+
+    button {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 700;
+        padding: 15px 25px;
+        border-radius: 50px;
+        margin-top: 25px;
+        transition: 0.25s ease;
+        font-family: inherit;
+    }
+
+    .primary {
+        background: linear-gradient(135deg, #ff4f9a, #ff78b7);
+        color: white;
+        box-shadow: 0 8px 25px rgba(255,79,154,0.35);
+    }
+
+    .primary:active {
+        transform: scale(0.94);
+    }
+
+    .secondary {
+        background: rgba(255,255,255,0.1);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .nickname-box {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+    .nickname {
+        padding: 10px 15px;
+        border-radius: 30px;
+        background: rgba(255,105,180,0.13);
+        border: 1px solid rgba(255,150,200,0.2);
+        color: #ffd6e9;
+        animation: pop 0.5s ease forwards;
+        opacity: 0;
+    }
+
+    @keyframes pop {
+        from {
+            opacity: 0;
+            transform: scale(0.7);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    .facts {
+        text-align: left;
+        margin-top: 20px;
+    }
+
+    .fact {
+        padding: 14px 5px;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .fact:last-child {
+        border-bottom: none;
+    }
+
+    .question {
+        font-size: 23px;
+        line-height: 1.5;
+        margin-top: 25px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+        position: relative;
+        min-height: 145px;
+    }
+
+    #noBtn {
+        background: rgba(255,255,255,0.1);
+        color: white;
+        border: 1px solid rgba(255,255,255,0.2);
+        position: relative;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -30px;
+        font-size: 20px;
+        animation: rise linear forwards;
+        opacity: 0.8;
+        pointer-events: none;
+        z-index: 1;
+    }
+
+    @keyframes rise {
+        0% {
+            transform: translateY(0) rotate(0deg);
+            opacity: 0;
+        }
+        15% {
+            opacity: 0.8;
+        }
+        100% {
+            transform: translateY(-110vh) rotate(360deg);
+            opacity: 0;
+        }
+    }
+
+    .progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 4px;
+        background: #ff5ca8;
+        width: 0%;
+        transition: width 0.5s ease;
+        z-index: 20;
+    }
+
+    .signature {
+        margin-top: 30px;
+        font-size: 18px;
+        color: #ffafd2;
+        font-weight: 600;
+    }
+
+    .big-heart {
+        font-size: 100px;
+        animation: heartbeat 1.2s infinite;
+    }
+
+    @keyframes heartbeat {
+        0%,100% {
+            transform: scale(1);
+        }
+        15% {
+            transform: scale(1.15);
+        }
+        30% {
+            transform: scale(1);
+        }
+        45% {
+            transform: scale(1.1);
+        }
+    }
+
+    .sorry {
+        font-size: 45px;
+        margin: 15px 0;
+    }
+
+    .secret {
+        margin-top: 20px;
+        font-size: 13px;
+        opacity: 0.5;
+    }
+
+    @media (max-width: 380px) {
+        h1 {
+            font-size: 28px;
+        }
+
+        h2 {
+            font-size: 23px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+    }
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<!-- PAGE 1 -->
+<section class="page active" id="page1">
+    <div class="container">
+
+        <div class="emoji-big">🚨</div>
+
+        <h1>OYE MADAMJI 😤</h1>
+
+        <div class="card">
+
+            <p>
+                Ek bahut hi serious emergency ho gayi hai...
+            </p>
+
+            <br>
+
+            <h2>PIHU MUJHSE GUSSA HAI 😭</h2>
+
+            <p>
+                Aur sabse badi problem ye hai ki...
+                <br><br>
+                <span class="highlight">
+                    iss gareeb ko pata bhi nahi hai ki galti kya hui 🥲
+                </span>
+            </p>
+
+            <p style="margin-top:15px;">
+                Lekin ek cheez pata hai...
+                <br>
+                <b>Madamji ko manaana padega. ❤️</b>
+            </p>
+
+        </div>
+
+        <button class="primary" onclick="nextPage()">
+            Madamji ko manaane ke liye →
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 2 -->
+<section class="page" id="page2">
+    <div class="container">
+
+        <div class="sorry">🥺</div>
+
+        <h1>Dear Pihu...</h1>
+
+        <div class="card">
+
+            <p>
+                Mujhe genuinely nahi pata maine kya kand kar diya 😭
+            </p>
+
+            <br>
+
+            <p>
+                Kya bola...
+                <br>
+                kya nahi bola...
+                <br>
+                kya kar diya...
+                <br>
+                ya kya nahi kiya...
+            </p>
+
+            <br>
+
+            <p>
+                <span class="highlight">
+                    Kuch bhi ho, Madamji gussa hain.
+                </span>
+            </p>
+
+            <br>
+
+            <p>
+                Aur main yahan hoon...
+                <br>
+                officially surrender karne. 🏳️
+            </p>
+
+        </div>
+
+        <button class="primary" onclick="nextPage()">
+            Aage dekho Madamji 👀
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 3 -->
+<section class="page" id="page3">
+    <div class="container">
+
+        <h2>Waise ek baat... 👀</h2>
+
+        <p>
+            Tumhe main kitne naam se bulata hoon,
+            iska koi hisaab hai kya? 😂
+        </p>
+
+        <div class="nickname-box">
+
+            <span class="nickname">Malkin 👑</span>
+            <span class="nickname">Madamji 😤</span>
+            <span class="nickname">Baby 🥺</span>
+            <span class="nickname">Babu 🫶🏻</span>
+            <span class="nickname">Rasmalai 🍬</span>
+            <span class="nickname">Rasgulla 🤍</span>
+            <span class="nickname">Baccha 🐣</span>
+            <span class="nickname">Sanvariya ❤️</span>
+
+        </div>
+
+        <div class="card">
+
+            <p>
+                Lekin naam chahe jo bhi ho...
+                <br><br>
+                <span class="highlight">
+                    meri favourite toh tum hi ho. ❤️
+                </span>
+            </p>
+
+        </div>
+
+        <button class="primary" onclick="nextPage()">
+            Aur bhi evidence hai → 😌
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 4 -->
+<section class="page" id="page4">
+    <div class="container">
+
+        <h2>Pihu ke baare mein 📋</h2>
+
+        <div class="card facts">
+
+            <div class="fact">
+                👑 <b>Madamji</b> — because apparently main employee hoon
+            </div>
+
+            <div class="fact">
+                ✨ <b>Beautiful</b> — ye toh obvious hai
+            </div>
+
+            <div class="fact">
+                💪 <b>Strong</b> — physically bhi aur mentally bhi
+            </div>
+
+            <div class="fact">
+                🧠 <b>Mature</b> — kabhi-kabhi mujhse zyada 😭
+            </div>
+
+            <div class="fact">
+                👠 <b>Model</b> — meri favourite model ❤️
+            </div>
+
+            <div class="fact">
+                🍔 <b>Burger lover</b> — important information
+            </div>
+
+            <div class="fact">
+                🌶️ <b>Pani puri enthusiast</b> — aur ispe koi argument nahi
+            </div>
+
+        </div>
+
+        <button class="primary" onclick="nextPage()">
+            Ab important part ❤️
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 5 -->
+<section class="page" id="page5">
+    <div class="container">
+
+        <div class="emoji-big">🥺</div>
+
+        <h1>Okay Madamji...</h1>
+
+        <div class="card">
+
+            <p>
+                Mujhe nahi pata maine kya kiya.
+            </p>
+
+            <br>
+
+            <p>
+                Lekin agar meri kisi baat se,
+                kisi harkat se,
+                ya meri stupidity se
+                tum hurt hui ho...
+            </p>
+
+            <br>
+
+            <h2>I'm Sorry. ❤️</h2>
+
+            <p>
+                Sach mein.
+            </p>
+
+            <br>
+
+            <p>
+                Aur haan...
+                <br>
+                <span class="highlight">
+                    gussa karna allowed hai...
+                </span>
+                <br><br>
+                bas mujhse zyada der tak baat band mat karna. 🥺
+            </p>
+
+        </div>
+
+        <button class="primary" onclick="nextPage()">
+            Last question... 👀
+        </button>
+
+    </div>
+</section>
+
+
+<!-- PAGE 6 -->
+<section class="page" id="page6">
+    <div class="container">
+
+        <div class="question">
+            Madamji...
+            <br><br>
+            <b>Ab thoda sa gussa kam karogi? 🥺❤️</b>
+        </div>
+
+        <div class="buttons">
+
+            <button class="primary" onclick="forgive()">
+                Haan ❤️
+            </button>
+
+            <button id="noBtn" onclick="moveNo()">
+                Nahi 😤
+            </button>
+
+        </div>
+
+        <p class="secret">
+            *Nahi button dabana allowed hai... technically 😭*
+        </p>
+
+    </div>
+</section>
+
+
+<!-- PAGE 7 -->
+<section class="page" id="page7">
+    <div class="container">
+
+        <div class="big-heart">❤️</div>
+
+        <h1>YESSSS 😭❤️</h1>
+
+        <div class="card">
+
+            <h2>Madamji maan gayi 🥹</h2>
+
+            <p>
+                Operation <b>"Pihu Ko Manaao"</b>
+                officially successful. ✅
+            </p>
+
+            <br>
+
+            <p>
+                Ab idhar aao...
+                <br>
+                <span class="highlight">
+                    ek virtual hug banta hai 🫂
+                </span>
+            </p>
+
+            <br>
+
+            <p>
+                Burger 🍔 + Pani Puri 🌶️
+                <br>
+                meri taraf se.
+            </p>
+
+        </div>
+
+        <div class="signature">
+            Tumhara Sanvariya ❤️
+        </div>
+
+    </div>
+</section>
+
+
+<script>
+
+let currentPage = 1;
+const totalPages = 7;
+
+function showPage(number) {
+
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
+
+    document.getElementById("page" + number).classList.add("active");
+
+    currentPage = number;
+
+    const progress = ((number - 1) / (totalPages - 1)) * 100;
+    document.getElementById("progress").style.width = progress + "%";
+
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+
+    createHearts(5);
+}
+
+
+function nextPage() {
+
+    if (currentPage < totalPages) {
+        showPage(currentPage + 1);
+    }
+
+}
+
+
+/* Funny NO button */
+
+let noClicks = 0;
+
+function moveNo() {
+
+    noClicks++;
+
+    const button = document.getElementById("noBtn");
+
+    const messages = [
+        "Are you sure? 🥺",
+        "Pakka? 😭",
+        "Madamji please 😭",
+        "Itni bhi kya narazgi 🥲",
+        "Burger khila dunga 🍔",
+        "Pani puri bhi 🌶️",
+        "Ab maan bhi jao na 🥺",
+        "Pleaseeeee ❤️"
+    ];
+
+    button.innerText = messages[Math.min(noClicks - 1, messages.length - 1)];
+
+    if (noClicks < 5) {
+
+        const x = Math.random() * 120 - 60;
+        const y = Math.random() * 80 - 40;
+
+        button.style.transform =
+            `translate(${x}px, ${y}px)`;
+
+    } else {
+
+        button.innerText = "Theek hai 😭";
+        button.style.transform = "none";
+
+    }
+}
+
+
+/* Forgive */
+
+function forgive() {
+
+    createHearts(35);
+
+    setTimeout(() => {
+        showPage(7);
+    }, 500);
+
+}
+
+
+/* Floating hearts */
+
+function createHearts(amount) {
+
+    const hearts = ["❤️", "💗", "💕", "💖", "💘", "🥺"];
+
+    for (let i = 0; i < amount; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.className = "heart";
+
+        heart.innerText =
+            hearts[Math.floor(Math.random() * hearts.length)];
+
+        heart.style.left =
+            Math.random() * 100 + "vw";
+
+        heart.style.animationDuration =
+            (3 + Math.random() * 4) + "s";
+
+        heart.style.fontSize =
+            (15 + Math.random() * 18) + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 7000);
+
+    }
+}
+
+
+/* Background hearts */
+
+setInterval(() => {
+
+    if (document.querySelectorAll(".heart").length < 12) {
+        createHearts(1);
+    }
+
+}, 1800);
+
+
+/* Little extra interaction */
+
+document.addEventListener("click", function() {
+
+    if (Math.random() > 0.75) {
+
+        createHearts(2);
+    }
+
+});
+
+</script>
+
+</body>
+</html>
